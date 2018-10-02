@@ -1,0 +1,18 @@
+<h1>chat</h1>
+<hr>
+<div class="app-mensajes" id="app-mensaje">
+  <div  *ngFor="let chatLocal of _cs.chats"
+        [ngClass]="{ 'text-right': _cs.usuario.uid == chatLocal.uid }">
+    <span class="badge" 
+          [ngClass]="{ 'badge-primary': _cs.usuario.uid == chatLocal.uid,
+                        'badge-success': _cs.usuario.uid != chatLocal.uid }">
+                        {{ chatLocal.nombre }}
+    </span> 
+                            
+    <p>{{ chatLocal.mensaje }}</p>
+  </div>
+<input type="text" name="mensaje"
+      [(ngModel)]="mensaje"
+      class="form-control"
+      (keyup.enter)="enviar_mensaje()"
+      placeholder="enviar mensaje">
